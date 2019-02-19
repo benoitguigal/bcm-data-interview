@@ -39,7 +39,9 @@ The following link will give you for every town, their GPS coordinates/
 ```
 https://www.data.gouv.fr/fr/datasets/listes-des-communes-geolocalisees-par-regions-departements-circonscriptions-nd/
 ```
- 
+(You can also find the file in `/data/coordinates_regions.csv` in this repository.)
+
+
 Once you aggregate the data, you can send the result to one of our database. You will provide you with the credentials and info.
  
 We expect to find at least one table in this database that satisfies the following schema:
