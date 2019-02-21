@@ -61,6 +61,17 @@ The dataset should then look like :
 |---|---|---|---|
 | ...  | ...  | ...  |  ... |
  
+# Scalability 
+ 
+If you were to develop the same application where the dataset was a few hundreds of terabytes, what would you do differently ? What technological choices would you make ? The goal here is not to develop anything but rather explain the ideal solution.
+
+# Versioning
+
+If our data source was to emit multiple versions (corrections for instance) of the same data, what could be the different applicable strategies ?
+
+# Operations
+
+What processes, infrastructure, products,... would you use to make sure the whole pipeline runs fine in production ?
 
 # Key Points
  
