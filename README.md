@@ -39,7 +39,7 @@ The following link will give the coordinates of the frontier for each region.
 ```
 https://datanova.laposte.fr/explore/dataset/contours-geographiques-des-nouvelles-regions-metropole/table/ 
 ```
-A measured point is in a region if it's inside of the poligon designed by data above. 
+A measured temperature is in a region if it's inside of the polygon designed by the data above.
 
 Once you aggregate the data, you can send the result to one of our database. You will provide you with the credentials and info.
  
