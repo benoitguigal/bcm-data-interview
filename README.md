@@ -1,7 +1,6 @@
 # Objective
  
-The main goal is to see how you would create an easy to industrialize pipeline for storing and analyzing temperatures 
-using different data sources. 
+The main goal is to see how you would create an easy to industrialize pipeline for storing and analyzing temperatures using different data sources. 
  
 You can develop this pipeline using Python, Node.js or Java. Please, use the language you feel the most comfortable with.
 Don't worry, we do not expect a streaming application. We would instead expect the application to run every hour. So please take this into account when you design the architecture.
@@ -42,7 +41,7 @@ https://www.data.gouv.fr/fr/datasets/listes-des-communes-geolocalisees-par-regio
 (You can also find the file in `/data/coordinates_regions.csv` in this repository.)
 
 
-Once you aggregate the data, you can send the result to one of our database. You will provide you with the credentials and info.
+Once you aggregate the data, you can send the results to one of our database. You will provide you with the credentials and info.
  
 We expect to find at least one table in this database that satisfies the following schema:
  
@@ -51,6 +50,24 @@ We expect to find at least one table in this database that satisfies the followi
  * temperature
  * numberOfPoints (the number of points used to compute the mean temperature)
  
+
+## Region definition
+
+The preceeding link provides us with a list of cities with their associated region. However, to perform the matchin, we need to get the GPS coordinates of every region. In order to ease the test, we are going to assume that regions are rectangles. Even though this does not make any sense in the real world, this is a shortcut to make your life easier ;)
+
+If we call `E` the list of cities and their GPS points for a region, then we define the bounding box for the region as : 
+``` 
+R = ( { min(latitude) in E, min(longitude) in E } ; { max(latitude) in E, max(longitude) in E } )
+```
+
+For instance, if for a given region, we get the following list of GPS coordinates:
+
+![Points within region](images/region-points.png)
+
+Then we define the associated region as:
+
+![Region shape](images/region-shape.png)
+
 # SQL
  
 Once we get all your data set up, we would like you to write a SQL query that gives us the following information: for every region and every hour, we want the temperature at this hour and also the temperature 3 hours before.
