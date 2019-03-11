@@ -33,13 +33,12 @@ Every record contains the temperature at the moment you call the API. If you cal
  
 Our objective is to find out the mean temperature for every region in France.
  
-The following link will give you for every town, their GPS coordinates/
+The following link will give the coordinates of the frontier for each region.
  
 ```
-https://www.data.gouv.fr/fr/datasets/listes-des-communes-geolocalisees-par-regions-departements-circonscriptions-nd/
+https://datanova.laposte.fr/explore/dataset/contours-geographiques-des-nouvelles-regions-metropole/table/ 
 ```
-(You can also find the file in `/data/coordinates_regions.csv` in this repository.)
-
+A measured temperature is in a region if it's inside of the polygon designed by the data above.
 
 Once you aggregate the data, you can send the results to one of our database. You will provide you with the credentials and info.
  
@@ -49,7 +48,6 @@ We expect to find at least one table in this database that satisfies the followi
  * region
  * temperature
  * numberOfPoints (the number of points used to compute the mean temperature)
- 
 
 ## Region definition
 
