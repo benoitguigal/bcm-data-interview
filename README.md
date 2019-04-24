@@ -1,21 +1,37 @@
-# Objective
+# Data Engineer test
+
+### Read before starting
+
+The following test aims to help you to show us your qualities as Data Engineer. 
+You are expected to be able to code, interact with data from an external API and create an industrialized a data pipeline. As a Data Engineer you will also show your knowledge about Data/Software technologies.
+
+* What we **do expect** from you: 
+    - You show your best skills, and you answer every question.
+    - Explaining how, what and why you will do something is as important as coding. Diagrams and schemas will weight as functions and methods.
+    - If you arrived here, you know about *craftmanship* ;) do not forget it when coding.
+    - Developing dummy functions documented and easy to feature is normal. Do not hesitate to use them.
+
+* What we **do not** expect:
+    - That you spend too much time in it, it's thought to be finish in around 2/3 hours maybe some more. Organize yourself as you will if you come with us. You can spend more or less time, (if you add time, keep it reasonable).
+    - You get an awful moment taking the test.
+
+* What's **a bonus**:
+    - Your code is tested with a hight coverage (>80%).
+    - The application you wrote works properly.
+    - The explanation of the architecture/technology is not only answered but also highly detailed for each expected point: 
+        SPOFs if any, future problems, budget, maintenance, technical debt, devOps tecnhiques.
+    - Even if you show your knowledge with other technologies, your answers are adapted to Google Cloud Platform.
  
-The main goal is to see how you would create an easy to industrialize pipeline for storing and analyzing temperatures using different data sources. 
- 
-You can develop this pipeline using Python, Node.js or Java. Please, use the language you feel the most comfortable with.
-Don't worry, we do not expect a streaming application. We would instead expect the application to run every hour. So please take this into account when you design the architecture.
- 
-# Context
- 
-A new partner in IoT gives us the measures of temperatures coming from their sensors. 
-We can access their measures using the following API.
+## Context
+A new international partner in IoT gives us the measures of temperatures coming from their sensors. 
+We can access their measures using the following (dummy) API. 
  
 ``` 
 curl -H "X-API-Key: dd764f40" https://my.api.mockaroo.com/sensor/temperatures
 ``` 
  
 This Rest API will send you back a json with the following schema:
- 
+
 ```
 [
   {
@@ -31,25 +47,25 @@ This Rest API will send you back a json with the following schema:
  
 Every record contains the temperature at the moment you call the API. If you call the API twice you will then get different results.
  
-Our objective is to find out the mean temperature for every region in France.
+***Our objective is to find out the mean temperature for every region in France.***/
  
 The following link will give the coordinates of the frontier for each region.
  
 ```
 https://datanova.laposte.fr/explore/dataset/contours-geographiques-des-nouvelles-regions-metropole/table/ 
 ```
-A measured temperature is in a region if it's inside of the polygon designed by the data above.
+Let's assume that a measured temperature is in a region if it's inside of the polygon designed by the data above.
 
-Once you aggregate the data, you can send the results to one of our database. You will provide you with the credentials and info.
+Once you aggregate the data, you can send the results to one of our RDBM database. We will provide you with the credentials and info.
  
-We expect to find at least one table in this database that satisfies the following schema:
+** We expect to find at least one table in this database that satisfies the following schema:**
  
  * hour (the time at the import was started)
  * region
  * temperature
  * numberOfPoints (the number of points used to compute the mean temperature)
 
-## Region definition
+#### (Hint) Region definition
 
 The preceeding link provides us with a list of cities with their associated region. However, to perform the matchin, we need to get the GPS coordinates of every region. In order to ease the test, we are going to assume that regions are rectangles. Even though this does not make any sense in the real world, this is a shortcut to make your life easier ;)
 
@@ -66,9 +82,9 @@ Then we define the associated region as:
 
 ![Region shape](images/region-shape.png)
 
-# SQL
+## SQL
  
-Once we get all your data set up, we would like you to write a SQL query that gives us the following information: for every region and every hour, we want the temperature at this hour and also the temperature 3 hours before.
+Once we get all your data set up, *we would like you to write a SQL query that gives us the following information: for every region and every hour, we want the temperature at this hour and also the temperature 3 hours before.*
  
 The dataset should then look like :
  
@@ -76,23 +92,24 @@ The dataset should then look like :
 |---|---|---|---|
 | ...  | ...  | ...  |  ... |
  
-# Scalability 
- 
-If you were to develop the same application where the dataset was a few hundreds of terabytes, what would you do differently ? What technological choices would you make ? The goal here is not to develop anything but rather explain the ideal solution.
+## Architecture plan. 
 
-# Versioning
+Now you should write a plan explaining the following points. The goal here is not to develop anything but rather explain your ideal solution:
 
-If our data source was to emit multiple versions (corrections for instance) of the same data, what could be the different applicable strategies ?
+* *If you were to develop the same application where the temperatures dataset grow by 1Go per minute, what would you do differently?* 
 
-# Operations
+* *If our data source was to emit multiple versions (corrections for instance) of the same data, what could be the different applicable strategies?*
 
-What processes, infrastructure, products,... would you use to make sure the whole pipeline runs fine in production ?
+* *What infrastructure, products, workflow scheduler, would you use to make sure the whole pipeline runs fine in production?*
+
+* *Some months later, we think to apply another aggregation/model to the input data. How would your architecture evolve to integrate this challenge?*
+
 
 # Key Points
  
 The key points we will be looking at are:
  
-    * Architecture and design. 
+    * Architecture and design.
     * Code quality.
     * Test
     * Tech choices.
@@ -100,6 +117,4 @@ The key points we will be looking at are:
     * Error Handling
     * Backup
     * Continuous integration
- 
-We know you may not have the time to make everything work fine, so it's ok to create dummy functions i.e functions that do nothing but are important for the process. Take your time to comment / show your ideas. 
- 
+    * Versioning
