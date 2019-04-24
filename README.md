@@ -47,7 +47,7 @@ This Rest API will send you back a json with the following schema:
  
 Every record contains the temperature at the moment you call the API. If you call the API twice you will then get different results.
  
-***Our objective is to find out the mean temperature for every region in France.***/
+***Our objective is to find out the mean temperature for every region in France.***
  
 The following link will give the coordinates of the frontier for each region.
  
@@ -58,7 +58,7 @@ Let's assume that a measured temperature is in a region if it's inside of the po
 
 Once you aggregate the data, you can send the results to one of our RDBM database. We will provide you with the credentials and info.
  
-** We expect to find at least one table in this database that satisfies the following schema:**
+**We expect to find at least one table in this database that satisfies the following schema:**
  
  * hour (the time at the import was started)
  * region
